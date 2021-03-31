@@ -67,6 +67,7 @@ interface RadioBoxProps {
     activeColor: 'green' | 'red'
 }
 
+//                       Generic com styled comp.
 export const RadioBox = styled.button<RadioBoxProps>`
     height: 4rem;
     border: 1px solid #d7d7d7;
