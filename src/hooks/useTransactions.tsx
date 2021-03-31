@@ -1,5 +1,5 @@
-import { createContext, ReactNode, useEffect, useState } from 'react'
-import { api } from './services/api'
+import { createContext, ReactNode, useContext, useEffect, useState } from 'react'
+import { api } from '../services/api'
 
 // Para q todos os componentes tenham acesso aos dados do contexto, eles devem ser englobados
 //pelo Provider que vem do createContext
@@ -25,7 +25,7 @@ interface TransactionContextData {
 }
 
 //const - pq n é um componente                                           força a tipagem
-export const TransactionContext = createContext<TransactionContextData>({} as TransactionContextData)
+const TransactionContext = createContext<TransactionContextData>({} as TransactionContextData)
 
 
 export function TransactionProvider({ children }: TransactionProviderProps) {
@@ -56,4 +56,10 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
             { children }
         </TransactionContext.Provider>
     )
+}
+
+export function useTransactions() {
+    const context = useContext(TransactionContext)
+
+    return context
 }
